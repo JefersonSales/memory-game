@@ -4,6 +4,15 @@ interface Card {
   img: string;
 }
 
+
+const shuffleNumber = (min: number, max: number) => {
+  const n = Math.random() * (max - min + 1) + min;
+  return parseInt(n.toString());
+}
+
+const originalCards: Card[] = [];
+const cards: Card[] = [];
+
 const uniqueCards: Card[] = [
   { id: 'card01', description: 'card01', img: '01.png' },
   { id: 'card02', description: 'card02', img: '02.png' },
@@ -15,14 +24,17 @@ const uniqueCards: Card[] = [
   { id: 'card08', description: 'card08', img: '08.png' },
 ];
 
-const originalCards: Card[] = [];
-
 uniqueCards.forEach(card => {
   originalCards.push({ ...card });
   originalCards.push({ ...card });
 })
 
-const cards: Card[] = [];
+let len = originalCards.length
 
+while (cards.length < len) {
+  let shuffled = shuffleNumber(0, originalCards.length - 1);
+  const item = originalCards.splice(shuffled, 1);
+  cards.push(item[0]);
+}
 
-export { originalCards, cards }
+export {cards }

@@ -1,3 +1,3 @@
-import { originalCards, cards } from "./Card"; 
+import { cards } from "./Card"; 
 
-console.log(originalCards)
+console.log(cards)
